@@ -206,7 +206,6 @@ class Graph:
 
             # reach the end - create path
             if curr_node == self.end:
-                self.end.set_end()  # ensure that end node colour does not change
                 self.display_path(prev_nodes)
                 return True
 
@@ -222,7 +221,8 @@ class Graph:
                         i += 1
                         open_set.put((f_score[neighbour], i, neighbour))
                         open_set_list.add(neighbour)
-                        neighbour.set_open()
+                        if neighbour != self.end:  # ensure that end node does not change colour (user can see end node)
+                            neighbour.set_open()
 
             self.update()
 
