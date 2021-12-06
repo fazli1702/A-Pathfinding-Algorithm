@@ -17,11 +17,17 @@ def main():
 
             mouse_coordinate = pygame.mouse.get_pos()
 
-            if pygame.mouse.get_pressed()[0]:  # left click
-                graph.left_click(mouse_coordinate)
+            if not started:
+                if pygame.mouse.get_pressed()[0]:  # left click
+                    graph.left_click(mouse_coordinate)
 
-            if pygame.mouse.get_pressed()[2]:  # right click
-                graph.right_click(mouse_coordinate)
+                if pygame.mouse.get_pressed()[2]:  # right click
+                    graph.right_click(mouse_coordinate)
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN and not started:   # return / enter button clicked
+                    started = True
+                    graph.a_star_vis()
 
         graph.update()
 
