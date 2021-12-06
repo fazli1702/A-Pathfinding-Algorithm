@@ -20,7 +20,7 @@ def get_pos_from_mouse(pos):
 
 def is_valid_pos(row, col):
     '''check if row, col is valid'''
-    if 0 < row < ROWS and 0 < col < COLS:
+    if 0 <= row < ROWS and 0 <= col < COLS:
         return True
     return False
 
